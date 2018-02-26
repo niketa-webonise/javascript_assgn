@@ -1,0 +1,57 @@
+
+
+
+<html>
+<head>
+<script type="text/javascript">
+	/*
+3. Write a JavaScript code that starts to execute on a button click and will open a particular URL in multiple new tabs (say 5) and close them after a certain interval recursively. The script should stop its execution onclick of another button on the same page.*/
+var tabs = [];
+var timeout;
+function open_win()
+{
+	var win;
+	//var tabs = [];
+	for(var i = 0;i<5;i++){
+
+
+		win=window.open("https://www.microsoft.com/","_blank");
+		tabs.push(win);
+	}
+	close_tab();
+	//for(var i = 0;i<tabs.length;i++){
+	
+
+	//win.close();
+   //close_win();
+	//setTimeout(function(){
+//mywindow.close()},300000000);
+    //setTimeout("window.open('z.com')",120000);
+
+
+}
+	function close_tab(){
+
+		timeout = setTimeout(function(){
+			
+			var winCl=tabs.pop();
+			winCl.close();
+			close_tab();
+
+		},3000);				
+	}
+
+function stop_script()
+{
+	clearTimeout(timeout);
+	
+	}
+</script>
+</head>
+<body>
+<form>
+<input type="button" value="Open Windows" onclick="open_win()">
+<input type="button" value="Stop" onclick="stop_script()">
+</form>
+</body>
+</html>

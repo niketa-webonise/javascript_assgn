@@ -1,0 +1,50 @@
+/*Write a JavaScript code that will prompt the user to enter a list of comma separated integers and returns the total occurrences of each number in an order(ascending/descending).
+
+INPUT: 	5,4,2,8,2,1,4,5,8,5,2,8,8,8
+
+OUTPUT: 	1: 1
+
+2: 3
+
+4: 2
+
+5: 2
+
+8: 5
+*/
+
+<html>
+<body>
+<script type="text/javascript">
+    var array_elements = prompt("enter numbers").split(",");
+    
+    array_elements.sort();
+
+    var current = null;
+    var cnt = 0;
+    for (var i = 0; i < array_elements.length; i++) {
+        if (array_elements[i] != current) {
+            if (cnt > 0) {
+                document.write(current + ' : ' + cnt );
+		document.write("<br>");
+	
+            }
+            current = array_elements[i];
+            cnt = 1;
+        } else {
+            cnt++;
+        }
+    }
+    if (cnt > 0) {
+        document.writeln(current + ' : ' + cnt );
+	document.write("<br>");
+    }
+
+
+</script>
+</body>
+</html>
+
+
+
+
