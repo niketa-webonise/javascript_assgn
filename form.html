@@ -23,28 +23,39 @@ Name: can accept character or numbers
 			users.push(users_info);
 			sessionStorage.users = json.stringfy(users);
 		}else{
-			var users = json.parse(sessionStorage.users);
+			var users = JSON.parse(sessionStorage.users);
 			users.push(users_info);
-			sessionStorage.users = json.stringfy(users);
+			sessionStorage.users = JSON.stringfy(users);
 		}
-		/*sessionStorage.setItem("current_timestamp",timeStamp);
-		sessionStorage.setItem("name", input.value); 
-		sessionStorage.setItem("email",email.value);*/
+		
 
 	}
+
+	function validateCode(){
+    		var name_validation = document.getElementById("name").value;
+    		if( /[^a-zA-Z0-9]/.match( name_validation ) ) 
+		{
+       		alert("Input is not alphanumeric");
+       		return false;
+    		}
+    		return true;     
+ 	}
+
+
 	function list_users()
 	{
-
+		
 	}
 	  </script>
 	  <body>
 	  	<form>
-	  	Name <input type="text"  id="name" required />
+	  	Name <input type="text"  id="name" required onsubmit="validateCode()"/>
 	  	<br><br><br>
 	  	Email <input type="email"  id="email" required/>
 	  	<br><br><br>
 	  	<input type="submit" value="onsubmit" onclick="onsubmit"/>
 	  	<button onclick="list_users" id="show_users">SHOW USERS</button>
 	  </form>
+		<ul id="list_of_users"></ul>
 	  </body>
 	  </html>
