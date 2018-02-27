@@ -1,9 +1,4 @@
-<script>
-/*Create a simple form that will accept name and email of a user and onsubmit, stores the details with the current timestamp. The user can add multiple names and email sets. There should be a button “SHOW USERS” which will list all the name and email sets with their timestamp in the document. The form should be validated before submission else it should show an error. (Expected session handling for this)     
-Name: can accept character or numbers
 
-	  Email: can accept a genuine email only.*/	
-	//var timeStamp = Math.floor(Date.now() / 1000);
 	   function onsubmit()
 	{ 
 		var users_info = {};
@@ -34,4 +29,4 @@ Name: can accept character or numbers
 	{
 
 	}
-	  </script>
+	  
