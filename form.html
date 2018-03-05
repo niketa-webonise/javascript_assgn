@@ -1,14 +1,16 @@
 <html>
 <head></head>
-
+<script type="text/javascript" src="form.js">
+	  </script>
 	  <body>
-	  	<form>
-	  	Name <input type="text"  id="name" required />
+	  	<form name="form1">
+	  	Name <input type="text"  id="name" required onsubmit="return validateCode()"/>
 	  	<br><br><br>
-	  	Email <input type="email"  id="email" required/>
+	  	Email <input type="email"  id="email" required />
 	  	<br><br><br>
-	  	<input type="submit" value="onsubmit" onclick="onsubmit"/>
-	  	<button onclick="list_users" id="show_users">SHOW USERS</button>
+	  	<input type="submit" value="submit" onclick="sub()"/>
+	  	<input type="button" onclick="list_users()" name="show_users" value="show users">
 	  </form>
+		<ul id="list_of_users"></ul>
 	  </body>
 	  </html>
