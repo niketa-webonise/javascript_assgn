@@ -1,32 +1,66 @@
-
-	   function onsubmit()
+ function sub()
 	{ 
+	if(!validateCode())
+        return;
 		var users_info = {};
 		var timeStamp= Math.floor(Date.now() / 1000);
 
-		var user_name = document.getElementById("name");
-		users_info.name = user_name.value;
+		var name = document.getElementById("name").value;
+		
 
-		var user_email = document.getElementById("email");
-		users_info.email = user_email.value;
+		var email = document.getElementById("email").value;
+			
+		users_info.name = name;
+		
+		users_info.email = email;
 
 		users_info.timestamp = timeStamp;
 		if(sessionStorage.users === undefined){
 			var users = [];
 			users.push(users_info);
-			sessionStorage.users = json.stringfy(users);
+			sessionStorage.users = JSON.stringify(users);
 		}else{
-			var users = json.parse(sessionStorage.users);
+			var users = JSON.parse(sessionStorage.users);
 			users.push(users_info);
-			sessionStorage.users = json.stringfy(users);
+			sessionStorage.users = JSON.stringify(users);
 		}
-		/*sessionStorage.setItem("current_timestamp",timeStamp);
-		sessionStorage.setItem("name", input.value); 
-		sessionStorage.setItem("email",email.value);*/
+
+		
 
 	}
+
+
+	function validateCode()
+	{ 
+	
+		var name_validation = document.getElementById("name").value;
+		
+		var reg1 = new RegExp("^[a-z0-9]+$");
+		    if(reg1.test(name_validation))
+			{
+			return true;
+				}
+			else
+				{
+				alert("please enter a valid name");
+				return false;
+			}
+			}
+
+
+
 	function list_users()
 	{
-
+	var ul = document.getElementById('list_of_users');
+	var users = JSON.parse(sessionStorage.users);
+	while(ul.hasChildNodes()){
+	ul.removeChild(ul.lastChild);
 	}
-	  
+	for(var i = 0;i<users.length;i++)
+	{
+		var userdata = users[i];
+		var li = document.createElement("LI");
+		li.innerHTML = userdata.name + " " + userdata.email + " " + userdata.timestamp;
+		ul.appendChild(li);
+	}
+		}
